@@ -1,0 +1,55 @@
+a) var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+function addPersonToLine(name){
+    line.push(name)
+}
+
+b) addPersonToLine("Mary")
+
+function findPersonInLine(name){
+    let index = line.indexOf(name)
+    if(index > 0){
+        return index
+    } else {
+        return name + " is not in line."
+    }
+}
+
+c) findPersonInLine("Josh")
+
+d) findPersonInLine("Emily")
+
+function cutInLine( friendJoining, friendInviting ){
+    let index = line.indexOf(friendInviting);
+    line.splice(index, 0, friendJoining)
+}
+
+e) cutInLine("Emily", "Ava")
+
+function leaveLine(personLeaving){
+    let index = line.indexOf(personLeaving)
+    line.splice(index, 1)
+}
+
+f) leaveLine("Patrick")
+
+2)  Say you are a manager at a sales company and want to track your salesmen's ranks and other details.
+    you could create an object full of objects, and each object is an employee.
+    Example: 
+    var employees = {
+        Mike: {
+            tenure: yes
+            sales: 1,000,000
+        },
+        Karen: {
+            tenure: no
+            sales: 10,000,000
+        },
+        MikeHoncho: {
+            tenure: no
+            sales: 5            
+        }
+    }
+
+3)  You can edit the information like you would any other object.  For instance, If you needed to update Karen's sales you could use...
+    employees.Karen.sales = 11,000,000.
