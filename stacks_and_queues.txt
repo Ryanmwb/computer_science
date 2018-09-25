@@ -1,0 +1,88 @@
+1) What is the main difference between a stack and a queue?
+
+    A: Stacks us LIFO while queue uses FIFO.
+
+2) What are the similarities between stacks and queues?
+
+    A: Both stacks and queues only allow two operations to be performed.  Push/enqueue or pop/dequeue.
+
+3) Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+
+    A: UNDO - LIFO, so the last thing you did would be on top of the stack.  REDO - I would use FIFO.
+
+
+
+PROMGRAMMING QUESTIONS
+
+1) 
+PSUEDO CODE
+Function Reverse(input)
+    init empty stack 
+    FOR each character in input
+        CALL stack.push with character
+    END FOR
+    INIT reversed to empty string
+    WHILE stack is not empty 
+        CALL stack.pop RETURNING character
+        append character to reversed
+    END WHILE
+    RETURN reversed
+END Function
+
+ACTUAL Function
+Function Reverse(input){
+    let stack = [];
+    let inputArray = input.toArray();
+    For(var i=0; i < input.length; i++){
+        stack.push(inputArray[i])
+    }
+    let reversedArray = [];
+    for(var i=0; i < stack.length; i++){
+        let symbol = stack.pop()
+        reversedArray.push(symbol)
+    }
+    let reversed = reversedArray.toString();
+    return reversed
+}
+
+2)  PSUEDO CODE
+    Function QueueToStack(queue){
+        let FIFO = queue;
+        let stack = [];
+        for FIFO length
+           stack.push(FIFO.shift()) 
+        end for
+        let LIFO = [];
+        for stack length
+            LIFO.push(stack.pop())
+        end for
+        return LIFO
+    }
+
+    ACTUAL CODE
+    Functino QueueToStack(queue){
+        let FIFO = queue;
+        let stack = [];
+        for(var i=0; i < FIFO.length; i++){
+            stack.push(FIFO.shift)
+        }
+        let LIFO = [];
+        for(var i=0; i < stack.length; i++){
+            LIFO.push(stack.pop())
+        }
+        return LIFO
+    }
+
+    3)  Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+        class Queue{
+            constructor(){
+                this.queue = [];
+            }
+            enqueue(addition){
+                this.queue.push(addition)
+            }
+            dequeue(){
+                let result = this.queue.shift()
+                return result
+            }
+        }
