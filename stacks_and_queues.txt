@@ -8,7 +8,7 @@
 
 3) Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
 
-    A: UNDO - LIFO, so the last thing you did would be on top of the stack.  REDO - I would use FIFO.
+    A: UNDO - LIFO, so the last thing you did would be on top of the stack.  REDO - would also be a LIFO, and it would be an array storing all of the values that were removed using the UNDO.
 
 
 

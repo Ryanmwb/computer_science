@@ -1,0 +1,48 @@
+1)  What are some pros and cons of using linked lists instead of arrays?
+    A: A pro is they are individually stored instead of having to store the entire linked list. Con, they must be accessed in order. 
+
+2)  Come up with a real world example of a linked list.
+    A: An album playlist if you can't click on any song you want, and instead of have to click "next" or "previous".
+
+3)  The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+    A: 
+    
+
+
+4)  Given an unsorted singly linked list, remove all duplicates from the linked list.
+    A:
+
+    function deleteDuplicates(head){
+        let currentNode = head;
+        let nextNode = currentNode.next;
+        while(nextNode !== null){
+            if(currentNode.value === nextNode.value){
+                nextNode = nextNode.next
+            }
+        }
+    }
+
+    function deleteDuplicates(list){
+        let result = list;
+        for(var i=0; i < result.length; i++){
+            let element = list[i];
+            for(var j=i+1; j < result.length; j++){
+                let element2 = list[j];
+                if(element === element2){
+                    result.splice(j,1)
+                }
+            }
+        }
+        return result
+    }
+
+5)  Given an unsorted singly linked list, reverse it.
+    A:
+    function reverse(list){
+        let array = list;
+        let result = [];
+        for(var i=0; i < list.length; i++){
+            result.push(array.pop())
+        }
+        return result
+    }
