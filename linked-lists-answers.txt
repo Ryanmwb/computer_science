@@ -4,45 +4,56 @@
 2)  Come up with a real world example of a linked list.
     A: An album playlist if you can't click on any song you want, and instead of have to click "next" or "previous".
 
-3)  The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+3, 4, 5)  The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
     A: 
-    
+    class LinkedList {
+        constructor(){
+            this.head = null;
+        }
 
+        push(element){
+            let node
+            node.value = element;
+            node.next = null;
 
-4)  Given an unsorted singly linked list, remove all duplicates from the linked list.
-    A:
-
-    function deleteDuplicates(head){
-        let currentNode = head;
-        let nextNode = currentNode.next;
-        while(nextNode !== null){
-            if(currentNode.value === nextNode.value){
-                nextNode = nextNode.next
+            if(this.head === null){
+                this.head = node;
+            } else {
+                let current = this.head;
+                while(current.next != null){
+                    current = current.next
+                }
+                current.next = node;
             }
         }
-    }
 
-    function deleteDuplicates(list){
-        let result = list;
-        for(var i=0; i < result.length; i++){
-            let element = list[i];
-            for(var j=i+1; j < result.length; j++){
-                let element2 = list[j];
-                if(element === element2){
-                    result.splice(j,1)
+        deleteDuplicates(){
+            if(this.head === null){
+                return "List is empty, no duplicates to delete"
+            } else {
+                let current = this.head;
+                let compare = current;
+                while(current.next !== null){
+                    while(compare.next !== null){
+                        if(current.value === compare.next.value){
+                            compare.next = compare.next.next
+                        }
+                        compare = compare.next
+                    }
+                    current = current.next;
                 }
             }
         }
-        return result
+
+        reverse(){
+            while(currNode!=null){
+                nextNode = currNode.next;
+                currNode.next = prevNode;
+                prevNode = currNode;
+                currNode = nextNode;
+            }
+        }
     }
 
-5)  Given an unsorted singly linked list, reverse it.
-    A:
-    function reverse(list){
-        let array = list;
-        let result = [];
-        for(var i=0; i < list.length; i++){
-            result.push(array.pop())
-        }
-        return result
-    }
+
+
