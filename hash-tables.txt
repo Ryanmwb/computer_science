@@ -1,0 +1,176 @@
+5)  Determine whether you would use a hash table or an object to store each of the following pieces of data:
+
+        A list of pets and their unique names. - OBJECT
+        The name, age, and the birthday of your best friend. - OBJECT
+        The name and location of every company in a given city. HASH TABLE
+        All of the books checked out from a library by a particular individual. HASH TABLE
+        The primary and secondary phone numbers for a contact. OBJECT
+
+6)  Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+    A: 
+    class CreateCustomer {
+    constructor(name, address, phone){
+      this.name = name;
+      this.address = address;
+      this.phone = phone;
+    }
+}
+
+class CustomerList{
+    constructor(){
+        this.storage = [];
+        this.storageLimit = 1000;
+    }
+
+    hash(customer){
+        let hash = 0;
+        for(var i=0; i < customer.phone.length; i++){
+            hash += customer.phone.charCodeAt(i);
+        }
+        return hash % this.storageLimit
+    }
+
+    addCustomer(customer){
+        let index = this.hash(customer);
+        //console.log("addCustomer index is => "+index)
+        if(!(this.storage[index])){ this.storage[index] = []};
+        this.storage[index].push(customer);
+        //console.log("value of "+index+" is...")
+        //console.log(this.storage[index])
+        //console.log("////////")
+    }
+
+    getCustomer(customer){
+        let index = this.hash(customer);
+        let results = [];
+        if(!(this.storage[index])){
+            return "Customer has not been added"
+        } else {
+            for(var i=0; i < this.storage[index].length; i++){
+                if(this.storage[index][i].phone === customer.phone){results.push(this.storage[index][i])}
+            }
+        }
+        //console.log("getCustomer index is => "+index)
+        //console.log("value of "+index+" is...")
+        //console.log(this.storage[index])
+        return results
+    }
+}
+
+let gary = new CreateCustomer("Gary Finestein", "123 Fake St.", "317-222-5555");
+let db = new CustomerList();
+
+db.addCustomer(gary)
+
+db.getCustomer(gary)
+
+7)  Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+    A: 
+    class CreateItem {
+        constructor(name, inventory){
+        this.name = name;
+        this.inventory = inventory;
+        }
+    }
+
+    class Inventory{
+        constructor(){
+            this.storage = [];
+            this.storageLimit = 1000;
+        }
+
+        hash(item){
+            let hash = 0;
+            for(var i=0; i < item.name.length; i++){
+                hash += item.name.charCodeAt(i);
+            }
+            return hash % this.storageLimit
+        }
+
+        addItem(item){
+            let index = this.hash(item);
+
+            if(!(this.storage[index])){ this.storage[index] = []};
+            
+            this.storage[index].push(item);
+        }
+
+        getItemInventory(item){
+            let index = this.hash(item);
+            let result;
+            if(!(this.storage[index])){
+                return "Item has not been added"
+            } else {
+                for(var i=0; i < this.storage[index].length; i++){
+                    if(this.storage[index][i].name === item.name){result = this.storage[index][i].inventory}
+                }
+            }
+            return result
+        }
+    }
+
+    let sugarCubes = new CreateItem("Sugar Cubes", 10);
+    let db = new Inventory();
+
+    db.addItem(sugarCubes)
+    //console.log(sugarCubes)
+    db.getItemInventory(sugarCubes)
+    let k = db.getItemInventory(sugarCubes);
+    console.log(k)
+
+8) 
+    A:
+    class CreateNewspaper{
+  constructor(publisher, publicationDate, content){
+    this.publisher = publisher;
+    this.publicationDate = publicationDate;
+    this.content = content;
+    this.key = this.publisher+this.publicationDate
+  }
+}
+
+class NewspaperDatabase{
+  constructor(){
+    this.storage = [];
+    this.limit = 1000;
+  }
+
+  hash(publisher, publicationDate){
+    let hash = 0;
+    let key = publisher+publicationDate;
+    for(var i=0; i < key.length; i++){
+      hash += key.charCodeAt(i);
+    }
+    return hash % this.limit
+  }
+
+  addNewspaper(newspaper){
+    let index = this.hash(newspaper.publisher, newspaper.publicationDate);
+    if(!(this.storage[index])){this.storage[index] = []}
+    this.storage[index].push(newspaper)
+    console.log("newspaper added is...")
+    console.log(newspaper)
+    console.log("addNewspaper index is => "+index)
+    console.log(this.storage[index])
+    console.log("///////////")
+  }
+
+  getNewspaper(publisher, publicationDate){
+    let index = this.hash(publisher, publicationDate);
+    let key = publisher+publicationDate;
+    let results = []
+    if(!(this.storage[index])){return "paper hasn't been added"}
+    for(var i=0; i < this.storage[index].length; i++){
+      if(key === this.storage[index][i].key){
+        results.push(this.storage[index][i])
+      }
+    }
+    return results
+  }
+}
+
+let db = new NewspaperDatabase;
+let wsj = new CreateNewspaper("sir jon", "oct 10", "here is walstreet stuff");
+
+db.addNewspaper(wsj)
+db.getNewspaper("sir jon", "oct 10")
