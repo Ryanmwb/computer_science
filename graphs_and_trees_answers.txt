@@ -1,0 +1,61 @@
+What is a binary tree and what makes it unique to other trees?
+A: A binary tree is a data structure and each node has at most two nodes, while a general tree can have an infinite number of children.
+
+What is a heuristic?
+A: A guess.
+
+What is another problem besides the shortest-path problem that requires the use of heuristics?
+A: A problem finding the longest-path.
+
+What is the difference between a depth-first search and a breadth-first search?
+A: DFS searches as far along each branch before backtracking while BFS explores all neighboring nodes before moving to the next level.
+
+Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+A: This graph would be one that can travel either direction to connecting nodes (undirected), nodes do not make a loop (a-cyclic), and the cost of traveling from one node to the other are not assigned (unweighted).
+
+What kind of graph is a binary search tree?
+A: A binary search tree is one where each node can have up to two children, and also orders the nodes from left to right based on a given value.
+
+PROGRAMMING QUESTIONS
+1)  Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+    A: 
+    class BinaryTree{
+        constructor(){
+            this.root = null;
+        }
+
+        addNode(node){
+            ...
+        }
+
+        findValue(value, node){
+            var itExists = "Value Exists In The Tree";
+            var doesNotExist = "Value Does Not Exist In The Tree";
+            if(this.root === null){
+                return doesNotExist
+            }else if(value === node.data){
+                return itExists
+            }else if(value > node.data){
+                return this.FindValue(value, node.right)
+            }else if(value < node.data){
+                return this.FindValue(value, node.left)
+            }
+        }
+
+        distanceBetween(node1, node2){
+            let lower, higher, result
+
+            if(node1 === node2){
+                result = 0;
+            }else if(node1 < node2){
+                lower = node1;
+                higher = node2;
+            }else{
+                lower = node2;
+                higher = node1;
+            }
+        }
+    }
+
+2)  Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+    A: Answer is written in class above.
