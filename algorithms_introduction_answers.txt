@@ -1,0 +1,48 @@
+Using proper pseudo-code, describe the following primitive algorithms:
+
+    Making coffee;
+        A:
+        IF you do not own a coffee maker, buy a coffee maker
+        IF you do not own coffee grounds, buy coffee grounds
+        IF you do not own coffee filters, buy coffee filters
+
+        Retrieve one coffee filters
+        Place coffee filter in the coffee filter basket
+        Retrieve half a cup of coffee grounds
+        place coffee grounds on top of the filter
+        Pour 4 cups of water into the coffee maker
+        Close all compartments on your coffee maker
+        Press the start button to make the coffee
+
+    Washing dishes;
+        A: 
+        Turn on the kitchen faucet
+        adjust water temperature to be warm
+        While you one or more dirty dishes
+            grab the nearest dirty dishes
+            place dish under the flow of water for a few seconds
+            remove dish from the flow of water
+            apply light soap to the dish
+            scrub dish with a sponge until all noticable food is removed
+            place back under the flow of water until all soap is removed
+            remove from the flow of water
+            dry dish off
+            place dish in a stack of clean dishes
+        end While
+        place all clean dishes in their appropriate places in the kitchen
+
+    A choice of your own.
+        A: Walking up stairs
+        While you are not at the top of the stairs
+            Place the left foot on top of the nearest step
+            place the right foot at the top of the nearest step
+        end while loop
+
+Name three companies who created an algorithm that made them successful
+    1) Berkshire and Hathaway - They have an algorithm for investing which has made them one of the wealthiest companies in the world.
+    2) The Wright Brothers - Created an algorithm to make man made flight a possibility
+    3) Ford Motor Company - Created an algorithm to design and manufacture cars for cheap
+
+3) An effective algorithm it logical, crystal clear in their steps, and can be completed in a finite amount of time.
+
+

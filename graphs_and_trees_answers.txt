@@ -42,8 +42,8 @@ PROGRAMMING QUESTIONS
             }
         }
 
-        distanceBetween(node1, node2){
-            let lower, higher, result
+        findDistanceBetween(root, node1, node2){
+            let lower, higher, lowestCommonAncestor, lowerDistanceToRoot, higherDistanceToRoot, result
 
             if(node1 === node2){
                 result = 0;
@@ -54,6 +54,43 @@ PROGRAMMING QUESTIONS
                 lower = node2;
                 higher = node1;
             }
+
+            lowestCommonAncestor = this.findCommonAncestor(root, lower, higher);
+            lowerDistanceToRoot = this.countDistance(lowestCommonAncestor, lower);
+            higherDistanceToRoot = this.countDistance(lowestCommonAncestor, higher);
+            result = lowerDistanceToRoot + higherDistanceToRoot;
+            return result;
+
+        }
+
+        findCommonAncestor(root, lower, higher){
+            let lowestCommonAncestor = root.data
+
+            if(lower === lowestCommonAncestor || higher === lowestCommonAncestor){
+                return lowestCommonAncestor
+            }else if (lower < lowestCommonAncestor && higher > lowestCommonAncestor){
+                return lowestCommonAncestor
+            }else if (lower < lowestCommonAncestor && higher < lowestCommonAncestor){
+                return this.findCommonAncestor(root.left, lower, higher)
+            }else if (lower > lowestCommonAncestor && higher > lowestCommonAncestor){
+                return this.findCommonAncestor(root.right, lower, higher)
+            }
+        }
+
+        countDistance(root, node){
+            let current = root; //should be the older (parent grand parent, etc) of the two nodes
+            let count = 0;
+            while(current){
+                if(root === node){
+                    return count
+                }else if(node > root.data){
+                    current = current.right
+                }else if(node < root.data){
+                    current = current.left
+                }
+                count++;
+            }
+
         }
     }
 
