@@ -14,19 +14,44 @@ Explain in your own words what an undirected, a-cyclic, unweighted graph is.
 A: This graph would be one that can travel either direction to connecting nodes (undirected), nodes do not make a loop (a-cyclic), and the cost of traveling from one node to the other are not assigned (unweighted).
 
 What kind of graph is a binary search tree?
-A: A binary search tree is one where each node can have up to two children, and also orders the nodes from left to right based on a given value.
+A: A binary search tree is a directed, a-cyclic, unweighted tree where each parent can have up to two child nodes.
 
 PROGRAMMING QUESTIONS
 1)  Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
     A: 
-    class BinaryTree{
+    class Node{
+  constructor(data){
+    this.data = data;
+    this.right = null;
+    this.left = null;
+  }
+}
+
+class BinaryTree{
         constructor(){
             this.root = null;
         }
 
-        addNode(node){
-            ...
-        }
+        /*addNode(node){
+          let root = this.root;
+          recurrsion(node){
+            if(this.root === null){
+              return this.root = node;
+            }else if(node > root && root.right === null){
+              root.right = node;
+              console.log(1)
+            }else if(node < root && root.left === null){
+              root.left = node;
+              console.log(2)
+            }else if(node > root){
+              root = root.right;
+              this.recurrsion(node)
+            }else if(node < root){
+              root = root.left;
+              this.recurrsion(node)
+            }
+          }
+        }*/
 
         findValue(value, node){
             var itExists = "Value Exists In The Tree";
@@ -36,9 +61,9 @@ PROGRAMMING QUESTIONS
             }else if(value === node.data){
                 return itExists
             }else if(value > node.data){
-                return this.FindValue(value, node.right)
+                return this.findValue(value, node.right)
             }else if(value < node.data){
-                return this.FindValue(value, node.left)
+                return this.findValue(value, node.left)
             }
         }
 
@@ -90,9 +115,11 @@ PROGRAMMING QUESTIONS
                 }
                 count++;
             }
-
+            return count
         }
     }
+
+
 
 2)  Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
     A: Answer is written in class above.
