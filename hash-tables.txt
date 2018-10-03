@@ -22,16 +22,16 @@ class CustomerList{
         this.storageLimit = 1000;
     }
 
-    hash(customer){
+    hash(phone){
         let hash = 0;
-        for(var i=0; i < customer.phone.length; i++){
-            hash += customer.phone.charCodeAt(i);
+        for(var i=0; i < phone.length; i++){
+            hash += phone.charCodeAt(i);
         }
         return hash % this.storageLimit
     }
 
     addCustomer(customer){
-        let index = this.hash(customer);
+        let index = this.hash(customer.phone);
         //console.log("addCustomer index is => "+index)
         if(!(this.storage[index])){ this.storage[index] = []};
         this.storage[index].push(customer);
@@ -40,14 +40,14 @@ class CustomerList{
         //console.log("////////")
     }
 
-    getCustomer(customer){
-        let index = this.hash(customer);
+    getCustomer(phoneNumber){
+        let index = this.hash(phoneNumber);
         let results = [];
         if(!(this.storage[index])){
             return "Customer has not been added"
         } else {
             for(var i=0; i < this.storage[index].length; i++){
-                if(this.storage[index][i].phone === customer.phone){results.push(this.storage[index][i])}
+                if(this.storage[index][i].phone === phoneNumber){results.push(this.storage[index][i])}
             }
         }
         //console.log("getCustomer index is => "+index)
@@ -56,13 +56,6 @@ class CustomerList{
         return results
     }
 }
-
-let gary = new CreateCustomer("Gary Finestein", "123 Fake St.", "317-222-5555");
-let db = new CustomerList();
-
-db.addCustomer(gary)
-
-db.getCustomer(gary)
 
 7)  Build a system that allows a store owner to track their store's inventory using a hash table for storage.
     A: 
@@ -79,30 +72,30 @@ db.getCustomer(gary)
             this.storageLimit = 1000;
         }
 
-        hash(item){
+        hash(itemName){
             let hash = 0;
-            for(var i=0; i < item.name.length; i++){
-                hash += item.name.charCodeAt(i);
+            for(var i=0; i < itemName.length; i++){
+                hash += itemName.charCodeAt(i);
             }
             return hash % this.storageLimit
         }
 
         addItem(item){
-            let index = this.hash(item);
+            let index = this.hash(item.name);
 
             if(!(this.storage[index])){ this.storage[index] = []};
             
             this.storage[index].push(item);
         }
 
-        getItemInventory(item){
-            let index = this.hash(item);
+        getItemInventory(itemName){
+            let index = this.hash(itemName);
             let result;
             if(!(this.storage[index])){
                 return "Item has not been added"
             } else {
                 for(var i=0; i < this.storage[index].length; i++){
-                    if(this.storage[index][i].name === item.name){result = this.storage[index][i].inventory}
+                    if(this.storage[index][i].name === itemName){result = this.storage[index][i].inventory}
                 }
             }
             return result
@@ -114,9 +107,9 @@ db.getCustomer(gary)
 
     db.addItem(sugarCubes)
     //console.log(sugarCubes)
-    db.getItemInventory(sugarCubes)
-    let k = db.getItemInventory(sugarCubes);
-    console.log(k)
+    db.getItemInventory("Sugar Cubes")
+    //let k = db.getItemInventory(sugarCubes);
+    //console.log(k)
 
 8) 
     A:
