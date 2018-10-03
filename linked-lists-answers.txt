@@ -6,53 +6,64 @@
 
 3, 4, 5)  The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
     A: 
-    class LinkedList {
-        constructor(){
-            this.head = null;
+    class Node{
+  constructor(value){
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor(){
+      this.head = null;
+  }
+
+  push(node){
+    if(this.head === null){
+        this.head = node;
+    } else {
+        let current = this.head;
+        while(current.next){
+            current = current.next
         }
+        current.next = node;
+    }
+  }
 
-        push(element){
-            let node
-            node.value = element;
-            node.next = null;
-
-            if(this.head === null){
-                this.head = node;
-            } else {
-                let current = this.head;
-                while(current.next != null){
-                    current = current.next
+  deleteDuplicates(){
+    if(this.head === null){
+        return "List is empty, no duplicates to delete"
+    } else {
+        let current = this.head;
+        let compare = current;
+        while(current.next !== null){
+            while(compare.next !== null){
+                if(current.value === compare.next.value){
+                    compare.next = compare.next.next
                 }
-                current.next = node;
+                compare = compare.next
             }
-        }
-
-        deleteDuplicates(){
-            if(this.head === null){
-                return "List is empty, no duplicates to delete"
-            } else {
-                let current = this.head;
-                let compare = current;
-                while(current.next !== null){
-                    while(compare.next !== null){
-                        if(current.value === compare.next.value){
-                            compare.next = compare.next.next
-                        }
-                        compare = compare.next
-                    }
-                    current = current.next;
-                }
-            }
-        }
-
-        reverse(){
-            while(currNode!=null){
-                nextNode = currNode.next;
-                currNode.next = prevNode;
-                prevNode = currNode;
-                currNode = nextNode;
-            }
+            current = current.next;
         }
     }
+  }
 
+  reverse(){
+      while(currNode!=null){
+          nextNode = currNode.next;
+          currNode.next = prevNode;
+          prevNode = currNode;
+          currNode = nextNode;
+      }
+  }
+}
+
+
+let ls = new LinkedList();
+let node1 = new Node("data 1")
+let node2 = new Node("data 2")
+console.log(ls)
+ls.push(node1)
+ls.push(node2)
+console.log(ls)
 
