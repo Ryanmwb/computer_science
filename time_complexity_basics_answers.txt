@@ -1,0 +1,29 @@
+What is time complexity and what is its relation to algorithms?
+A: Time complexity is a function that estimates the time it will take for a program to run.  
+In order to create a time complexity function you will need to breakdown the program's algorithm into
+parts.  Then decide if each of those steps of the program are linear, exponential, etc.  
+
+What is runtime?
+A: Runtime is the actual amount of time that passed before the program finished. 
+
+How is the runtime of an algorithm calculated?
+A: See first answer.  Once you have broken down the parts of a program and decided if it is
+linear, linear log, log, exponential, etc, you then add those parts together and determine the time complexity.  
+For instance, if you have a loop that is going to run n times inside of another loop that is going to n number
+of times, the time complexity of this function would be O(n^2).
+
+Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+A: constant, logarithmic, linear, log-linear, quadratic, and exponential are the ones listed.
+Another growth rate not mentioned would be a cubic growth rate.
+
+Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+A: If I had a line of people wanting to buy a train ticket from me, the number of times I hand out a ticket would be linearly related to the number
+of people who show up to buy a ticket.
+
+6) This function has a linear growth rate.
+
+7) This function has a quadratic growth rate.
+
+8) This function has an exponential growth rate.
+
+9) #6 function is the most efficient.
