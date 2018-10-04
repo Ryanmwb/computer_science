@@ -1,0 +1,52 @@
+Define and compare recursion and iteration.
+A: Iterators loop through data, while a recursion calls itself repeatedly while incrementaly moving toward the set base case.
+
+Name five algorithms that are commonly implemented by recursion.
+A: factorial, addition, Primality tester, fibonacci numbers, and euclid's algorithm.
+
+When should you use recursion, and when should you avoid recursion? Give examples for each.
+A: Generally you want to avoid recursion and use an iterative function instead, but you can use recursion when your problem can be broken down into a tree like structure.
+
+Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+A: Both of them reach the same answer, but an iterator loops through the data while a recursive function calls its function repeatedly.
+
+Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+A: 
+let result = 0;
+
+function arrayNumber(array){
+  if(!(array.length)){
+    return result
+  } else {
+    result++;
+    array.pop()
+    console.log("result = "+result)
+    arrayNumber(array)
+  }
+};
+
+let array = [0, 1, 12, 13]
+
+console.log(arrayNumber(array))
+
+A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+A: 
+var isPalindrome = function(string) {
+    var length = string.length;
+    if (length === 0 || length === 1) {
+        return true;
+    }
+    
+    if (string[0] === string[length - 1]) {
+        return isPalindrome( string.slice(1, length - 1) );
+    }
+    
+    return false;
+};
+
+isPalindrome("Ryan")
+isPalindrome("racecar")
+
+Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+A: 
+This is an infinite recursion because the link calls on the same link we were already on, but nothing is changing.
