@@ -15,19 +15,18 @@ A:
 let result = 0;
 
 function arrayNumber(array){
-  if(!(array.length)){
-    return result
+  if(array[1] == undefined){
+    return result + 1
   } else {
     result++;
     array.pop()
-    console.log("result = "+result)
-    arrayNumber(array)
+    return arrayNumber(array)
   }
 };
 
 let array = [0, 1, 12, 13]
 
-console.log(arrayNumber(array))
+arrayNumber(array)
 
 A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 A: 
