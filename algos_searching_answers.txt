@@ -1,0 +1,50 @@
+What is a real-life scenario that uses linear search?
+A: If you are looking for a specific student in an unsorted line.
+
+What is a real-life scenario that uses binary search?
+A: Perhaps you are looking to put back a book in the library.  You know it is sorted by author, but you haven't looked through the stacks before so you start in the middle and work towards your desired location.
+
+Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+A: Seven.
+
+Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+A: Three.
+
+Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+A: linear search because the collection is unsorted and binary search wouldn't work.
+
+Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+A: Binary search because it ignores values that are less/more than the value it is searching.  It repeatedly breaks the searched area in half until the value is found, which is significantly quicker than searching each index.
+
+You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+A:
+function binarySearch(sortedArray, find) {
+  var lowIndex = 0;
+  var highIndex = sortedArray.length - 1;
+  while (lowIndex <= highIndex) {
+    var mid = Math.floor((lowIndex + highIndex) / 2);
+    if (sortedArray[mid] == find) {
+      return mid;
+    } else if (sortedArray[mid] < find) {
+      lowIndex = mid + 1;
+    } else {
+      highIndex = mid - 1;
+    }
+  } return null;
+}
+
+binarySearch(dictionary, "albatross")
+
+You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+A:
+let fish = ["black", "red", "orange", "blue", "white", "purple"]
+
+function linearSearch(array, find){
+  for(var i = 0; i < array.length; i++){
+    if(array[i] === find){
+      return "fish is at index "+i;
+    }
+  }
+}
+
+linearSearch(fish, "white")
