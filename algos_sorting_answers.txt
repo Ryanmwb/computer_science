@@ -1,0 +1,56 @@
+Write pseudocode for bubble sort.
+A:
+let array = [1, 10, 3, 6, 12, 15, 29, 2]
+
+function bubbleSort(array){
+  var changesMade = true;
+  while(changesMade == true){
+    for(var i=0; i < array.length - 1; i++){
+      changesMade = false;
+      for(var j = i+1; j < array.length; j++){
+        if(array[j] < array[i]){
+          let temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+          changesMade = true;
+        }
+      }
+    }
+  }
+  return array
+}
+
+bubbleSort(array)
+
+Write pseudocode for quicksort.
+A:
+Quicksort(Array as array, low as int, high as int){
+    if (low < high){
+        pivot_location = Partition(A,low,high)
+        Quicksort(Array,low, pivot_location)
+        Quicksort(Array, pivot_location + 1, high)
+    }
+}
+Partition(Array as array, low as int, high as int){
+     pivot = Array[low]
+     leftwall = low
+
+     for i = low + 1 to high{
+         if (Array[i] < pivot) then{
+             swap(A[i], A[leftwall + 1])
+             leftwall = leftwall + 1
+         }
+     }
+     swap(pivot,Array[leftwall])
+
+ return (leftwall)}
+
+ We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+ A: With merge sort and quicksort you are minimizing the amount of times you have to loop through data and also minimizing the number of times you have to move the data.  
+ Bubble Sort is very inefficent compared to quicksort and merge sort because it has a time complexity of O(n^2), which means if there are 3 values it has to perform 9 
+ opperations. Quicksort on the other hand has a time complexity of O(n log n) and Merge sort also has a time complexity of O(n log n).
+
+All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+A: Bucket sort is a sorting method that creates several 'buckets' to place values in.  It then sorts through the values it has been given and places those in the buckets based on their value.  If 
+a bucket has several values in it, it then sorts those values.  Once it has sorted each bucket, it then goes through the buckets, in order, and moves those values in an array.  
+Use bucket sort when the input is uniformly distributed over a range.
