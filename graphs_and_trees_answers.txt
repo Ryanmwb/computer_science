@@ -56,7 +56,7 @@ class BinaryTree{
         findValue(value, node){
             var itExists = "Value Exists In The Tree";
             var doesNotExist = "Value Does Not Exist In The Tree";
-            if(this.root === null){
+            if(this.root === null || node === null){
                 return doesNotExist
             }else if(value === node.data){
                 return itExists
@@ -106,11 +106,11 @@ class BinaryTree{
             let current = root; //should be the older (parent grand parent, etc) of the two nodes
             let count = 0;
             while(current){
-                if(root === node){
+                if(root.data === node.data){
                     return count
-                }else if(node > root.data){
+                }else if(node.data > root.data){
                     current = current.right
-                }else if(node < root.data){
+                }else if(node.data < root.data){
                     current = current.left
                 }
                 count++;
