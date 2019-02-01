@@ -67,11 +67,11 @@ class BinaryTree2{
         if(lowerNode.data === lowestCommonAncestor.data || higherNode.data === lowestCommonAncestor.data){
             console.log("LCA is.... ")
             console.log(lowestCommonAncestor)
-            this.distanceBetweenNodes(lowestCommonAncestor.left, lowerNode, higherNode)
+            this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data > lowestCommonAncestor.data){
             console.log("LCA is.... ")
             console.log(lowestCommonAncestor)
-            this.distanceBetweenNodes(lowestCommonAncestor.left, lowerNode, higherNode)
+            this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data < lowestCommonAncestor.data){
             this.findCommonAncestor(lowestCommonAncestor.left, lowerNode, higherNode)
         }else if (lowerNode.data > lowestCommonAncestor.data && higherNode.data > lowestCommonAncestor.data){
@@ -80,24 +80,30 @@ class BinaryTree2{
     }
     distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode){
         console.log("THREE.....distanceBetweenNodes being called...")
+        console.log("lca again is....")
+        console.log(lowestCommonAncestor)
 
         var lowerCount = this.countDistance(lowestCommonAncestor, lowerNode, 0);
         var higherCount = this.countDistance(lowestCommonAncestor, higherNode, 0);
 
-        var total = lowerCount + higherCount;
+        console.log("lower count is....")
+        console.log(lowerCount)
+        /*var total = lowerCount + higherCount;
         console.log("total iss.....")
         console.log(total)
-        return total;
+        return total;*/
     }
     countDistance(lca, node, count){
         console.log("FOUR....... countDistance being called....")
-        console.log("count is..."+count)
-        console.log("lca is...."+lca.data)
         if(lca.data == node.data){
             return count
         } else if(node.data > lca.data){
+            console.log("right...")
+            console.log(lca.right)
             this.countDistance(lca.right, node, count+1)
         } else if(node.data < lca.data){
+            console.log("left....")
+            console.log(lca.left)
             this.countDistance(lca.left, node, count+1)
         }
     }
