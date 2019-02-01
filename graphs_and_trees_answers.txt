@@ -120,6 +120,9 @@ class BinaryTree{
     }
 
 
+    
+
+
 
 2)  Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
     A: Answer is written in class above.
