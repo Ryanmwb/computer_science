@@ -50,27 +50,19 @@ class BinaryTree2{
     //when finding common ancestor lower node argument is before higher node argument.  This decides which is which.
     //call on the find common ancestor right from the below function.  
     findLowerHigher(node1, node2){
-        console.log("ONE.....findLowerHigher being called...")
         if(node1.data > node2.data){
-            console.log("node1 > node2")
             //findCommonAncestor(root, node1, node2);
             this.findCommonAncestor(this.root, node2, node1)
         } else {
-            console.log("node2 > node1")
             //findCommonAncestor(root, node2, node1);
             this.findCommonAncestor(this.root, node1, node2)
         }
     }
     // 1)findLowerHigher 2)findCommonAncestor 3) countDistance
     findCommonAncestor(lowestCommonAncestor, lowerNode, higherNode){
-        console.log("TWO.....findCommonAncestor being called...")
         if(lowerNode.data === lowestCommonAncestor.data || higherNode.data === lowestCommonAncestor.data){
-            console.log("LCA is.... ")
-            console.log(lowestCommonAncestor)
             this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data > lowestCommonAncestor.data){
-            console.log("LCA is.... ")
-            console.log(lowestCommonAncestor)
             this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data < lowestCommonAncestor.data){
             this.findCommonAncestor(lowestCommonAncestor.left, lowerNode, higherNode)
@@ -79,34 +71,23 @@ class BinaryTree2{
         }
     }
     distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode){
-        console.log("THREE.....distanceBetweenNodes being called...")
 
         var lowerCount = this.countDistance(lowestCommonAncestor, lowerNode, 0);
         var higherCount = this.countDistance(lowestCommonAncestor, higherNode, 0);
-
-        console.log("lower count is....")
-        console.log(lowerCount)
-        /*var total = lowerCount + higherCount;
-        console.log("total iss.....")
+        var total = lowerCount + higherCount;
+        console.log("total is")
         console.log(total)
-        return total;*/
+        return total
     }
     countDistance(lca, node, count){
-        console.log("FOUR....... countDistance being called....")
         if(lca.data == node.data){
-            console.log("count is....")
-            console.log(count)
             return count
         } 
         if(node.data > lca.data){
-            console.log("right...")
-            console.log(lca.right.data)
-            this.countDistance(lca.right, node, count+1)
+            return this.countDistance(lca.right, node, count+1)
         } 
         if(node.data < lca.data){
-            console.log("left....")
-            console.log(lca.left.data)
-            this.countDistance(lca.left, node, count+1)
+            return this.countDistance(lca.left, node, count+1)
         }
     }
 }
@@ -142,5 +123,4 @@ tree.addNode(node12, tree.root)
 tree.addNode(node13, tree.root)
 
 //tree.findValue(9, tree.root);//should log "value exists"
-console.log(tree.root.left.left.left.right); //should log "9"
-tree.findLowerHigher(node11, node9)// should log "node2 > node1"
+tree.findLowerHigher(node1, node4)// should log "node2 > node1"
