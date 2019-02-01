@@ -80,8 +80,6 @@ class BinaryTree2{
     }
     distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode){
         console.log("THREE.....distanceBetweenNodes being called...")
-        console.log("lca again is....")
-        console.log(lowestCommonAncestor)
 
         var lowerCount = this.countDistance(lowestCommonAncestor, lowerNode, 0);
         var higherCount = this.countDistance(lowestCommonAncestor, higherNode, 0);
@@ -96,14 +94,18 @@ class BinaryTree2{
     countDistance(lca, node, count){
         console.log("FOUR....... countDistance being called....")
         if(lca.data == node.data){
+            console.log("count is....")
+            console.log(count)
             return count
-        } else if(node.data > lca.data){
+        } 
+        if(node.data > lca.data){
             console.log("right...")
-            console.log(lca.right)
+            console.log(lca.right.data)
             this.countDistance(lca.right, node, count+1)
-        } else if(node.data < lca.data){
+        } 
+        if(node.data < lca.data){
             console.log("left....")
-            console.log(lca.left)
+            console.log(lca.left.data)
             this.countDistance(lca.left, node, count+1)
         }
     }
