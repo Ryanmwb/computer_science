@@ -52,22 +52,22 @@ class BinaryTree2{
     findLowerHigher(node1, node2){
         if(node1.data > node2.data){
             //findCommonAncestor(root, node1, node2);
-            this.findCommonAncestor(this.root, node2, node1)
+            return this.findCommonAncestor(this.root, node2, node1)
         } else {
             //findCommonAncestor(root, node2, node1);
-            this.findCommonAncestor(this.root, node1, node2)
+            return this.findCommonAncestor(this.root, node1, node2)
         }
     }
     // 1)findLowerHigher 2)findCommonAncestor 3) countDistance
     findCommonAncestor(lowestCommonAncestor, lowerNode, higherNode){
         if(lowerNode.data === lowestCommonAncestor.data || higherNode.data === lowestCommonAncestor.data){
-            this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
+            return this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data > lowestCommonAncestor.data){
-            this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
+            return this.distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode)
         }else if (lowerNode.data < lowestCommonAncestor.data && higherNode.data < lowestCommonAncestor.data){
-            this.findCommonAncestor(lowestCommonAncestor.left, lowerNode, higherNode)
+            return this.findCommonAncestor(lowestCommonAncestor.left, lowerNode, higherNode)
         }else if (lowerNode.data > lowestCommonAncestor.data && higherNode.data > lowestCommonAncestor.data){
-            this.findCommonAncestor(lowestCommonAncestor.right, lowerNode, higherNode)
+            return this.findCommonAncestor(lowestCommonAncestor.right, lowerNode, higherNode)
         }
     }
     distanceBetweenNodes(lowestCommonAncestor, lowerNode, higherNode){
@@ -75,8 +75,7 @@ class BinaryTree2{
         var lowerCount = this.countDistance(lowestCommonAncestor, lowerNode, 0);
         var higherCount = this.countDistance(lowestCommonAncestor, higherNode, 0);
         var total = lowerCount + higherCount;
-        console.log("total is")
-        console.log(total)
+        
         return total
     }
     countDistance(lca, node, count){
@@ -123,4 +122,4 @@ tree.addNode(node12, tree.root)
 tree.addNode(node13, tree.root)
 
 //tree.findValue(9, tree.root);//should log "value exists"
-tree.findLowerHigher(node1, node4)// should log "node2 > node1"
+console.log(tree.findLowerHigher(node5, node13))// should log "node2 > node1"
