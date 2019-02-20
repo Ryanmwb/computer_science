@@ -10,6 +10,11 @@ class BinaryTree2{
     constructor(){
         this.root = null;
     }
+
+    add(value){
+        var node = new Node(value);
+        this.addNode(node, this.root);
+    }
     addNode(node, root){
         if(root == null){
             return this.root = node;
@@ -97,7 +102,7 @@ var node1 = new Node(32);
 var node2 = new Node(1000);
 var node3 = new Node(50);
 var node4 = new Node(1001);
-var node5 = new Node(75);
+//var node5 = new Node(75);
 var node6 = new Node(12);
 var node7 = new Node(22);
 var node8 = new Node(27);
@@ -111,7 +116,7 @@ tree.addNode(node1, tree.root)
 tree.addNode(node2, tree.root)
 tree.addNode(node3, tree.root)
 tree.addNode(node4, tree.root)
-tree.addNode(node5, tree.root)
+tree.add(75);
 tree.addNode(node6, tree.root)
 tree.addNode(node7, tree.root)
 tree.addNode(node8, tree.root)
